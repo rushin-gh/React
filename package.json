@@ -1,0 +1,25 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "This is namaste-react by Rushikesh Naikwadi",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rushin-gh/React.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Rushikesh Naikwadi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rushin-gh/React/issues"
+  },
+  "homepage": "https://github.com/rushin-gh/React#readme",
+  "dependencies": {
+    "parcel": "^2.0.0"
+  }
+}
