@@ -22,4 +22,16 @@ const ele = React.createElement(
     )
 )
 
-ReactDOM.createRoot(document.getElementById("root")).render(ele);
+// setTimeout(() => {
+    // ReactDOM.createRoot(document.getElementById("root")).render(ele);
+// }, 5000);
+
+const element = (
+    <div id='div' tabIndex="5">
+        This is div
+    </div>
+);
+ReactDOM.createRoot(document.getElementById("root")).render(element);
+
+// setTimeout(() => {
+// }, 5000);
