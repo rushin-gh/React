@@ -41,7 +41,7 @@
 }
 
 #res-card {
-    width: 200px;
+    width: 260px;
     /* height: 400px; */
     /* border: 1px solid black; */
     margin: 20px;
@@ -58,12 +58,28 @@
 }
 
 #res-logo {
-    width: 190px;
-    height: 175px;
+    width: 250px;
     border-radius: 10%;
 }
 
 #res-rate-eta {
     display: flex;
     justify-content: space-between;
+}
+
+#topRatedBtn {
+    margin: 10px;
+    padding: 5px;
+    font-size: 20px;
+}
+
+#topRatedBtn:hover {
+    background-color: aquamarine;
+    cursor: pointer;
+}
+
+#showAll {
+    margin: 10px;
+    padding: 5px;
+    font-size: 20px;
 }

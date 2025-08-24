@@ -1,80 +1,4 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-
-
-const Header = () => {
-    return (
-        <div id='header'>
-            <div id='logo-container'>
-                <img id='logo' src='https://s3.amazonaws.com/cdn.designcrowd.com/blog/39-Food-Delivery-Logos-That-Will-Leave-You-Hungry-For-More/food-delivery-by-simplepixelsl-brandcrowd.png'/>
-            </div>
-            <div id='nav-items'>
-                <ul>
-                    <li>Home</li>
-                    <li>About us</li>
-                    <li>Contact us</li>
-                    <li>Cart</li>
-                </ul>
-            </div>
-        </div>
-    )
-}
-
-const cardStyle = {
-    backgroundColor: 'yellow'
-}
-
-const ResCard = (props) => {
-    const { resData } = props;
-
-    const { 
-        name, 
-        cuisines, 
-        avgRatingString, 
-        sla 
-    } = props.resData.info;
-
-    return (
-        <div id='res-card'  >
-            <img id='res-logo' src='https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/jo9pdipf4elcuch8g55q'></img>
-            <h2 id='res-name'>{name}</h2>
-            <h3>{cuisines.join(', ')}</h3>
-            <div id='res-rate-eta'>
-                <h4>{avgRatingString + '\u2605'}</h4>
-                <h4>{sla.deliveryTime + ' Minutes'}</h4>
-            </div>
-        </div>
-    );
-}
-
-
-
-const Body = () => {
-    return (
-        <div id='body'>
-            <div id='search-bar'>
-                Search
-            </div>
-            <div id='res-container'>
-                {
-                    restaurants.map((item, index) => <ResCard resData={item} key={index}/>)
-                }
-            </div>
-        </div>
-    );
-}
-
-const AppLayout = () => {
-    return (
-        <div id='app'>
-            <Header/>
-            <Body/>
-        </div>
-    );
-}
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<AppLayout/>);
+export const CDN_URL = 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/';
 
 const restaurants = [
     {
@@ -1842,3 +1766,5 @@ const restaurants = [
         "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo"
     }
 ]
+
+export default restaurants;
