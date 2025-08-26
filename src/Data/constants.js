@@ -1,5 +1,13 @@
 export const CDN_URL = 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/';
 
+export const swiggy_mock_API = 'https://swiggy-api-4c740.web.app/swiggy-api.json';
+
+/*
+https://pastebin.com/raw/0QcdEDBL
+https://swiggy-api-4c740.web.app/swiggy-api.json
+https://raw.githubusercontent.com/namastedev/namaste-react/refs/heads/main/swiggy-api
+*/
+
 const restaurants = [
     {
         "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",

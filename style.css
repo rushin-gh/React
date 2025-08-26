@@ -83,3 +83,16 @@
     padding: 5px;
     font-size: 20px;
 }
+
+#shimmer-container {
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.shimmer-card {
+    background-color: gainsboro;
+    width: 300px;
+    height: 400px;
+    margin: 10px 10px;
+}
