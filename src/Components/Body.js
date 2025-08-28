@@ -2,56 +2,13 @@ import ResCard from './ResCard';
 import restaurants from "../Data/constants";
 import { useState, useEffect } from 'react';
 import { swiggy_mock_API } from '../Data/constants';
-import ShimmerUI from './ShimmerUI';
+import ShimmerUI from './ShimmerUI'; 
 
 
 const Body = () => {
-    // let [listOrRestaurants, setListOfRestaurants] = useState([
-    //     {
-    //         "info": {
-    //             "name": "Pizza Hut",
-    //             "cloudinaryImageId": "RX_THUMBNAIL/IMAGES/VENDOR/2025/6/9/e9c126a2-faff-42e6-88f7-7feaf452f46b_377797.JPG",
-    //             "costForTwo": "₹350 for two",
-    //             "cuisines": [
-    //             "Pizzas"
-    //             ],
-    //             "avgRatingString": 4.1,
-    //             "sla": {
-    //                 "deliveryTime": 33,
-    //             }
-    //         }
-    //     },
-    //     {
-    //         "info": {
-    //             "name": "Dominos",
-    //             "cloudinaryImageId": "RX_THUMBNAIL/IMAGES/VENDOR/2025/6/9/e9c126a2-faff-42e6-88f7-7feaf452f46b_377797.JPG",
-    //             "costForTwo": "₹350 for two",
-    //             "cuisines": [
-    //             "Pizzas"
-    //             ],
-    //             "avgRatingString": 3.9,
-    //             "sla": {
-    //                 "deliveryTime": 33,
-    //             }
-    //         }
-    //     },
-    //     {
-    //         "info": {
-    //             "name": "Mac Donald's",
-    //             "cloudinaryImageId": "RX_THUMBNAIL/IMAGES/VENDOR/2025/6/9/e9c126a2-faff-42e6-88f7-7feaf452f46b_377797.JPG",
-    //             "costForTwo": "₹350 for two",
-    //             "cuisines": [
-    //             "Pizzas"
-    //             ],
-    //             "avgRatingString": 3.9,
-    //             "sla": {
-    //                 "deliveryTime": 33,
-    //             }
-    //         }
-    //     }
-    // ]);
-
     let [listOrRestaurants, setListOfRestaurants] = useState([]);
+    let [filteredList, setFilteredList] = useState([]);
+    let [searchText, setSearchText] = useState('');
 
     useEffect(() => {
         fetchData();
@@ -60,37 +17,38 @@ const Body = () => {
     const fetchData = async() => {
         const response = await fetch(swiggy_mock_API);
         const respJson = await response.json();
-
         const updResList = respJson.data.cards.find(item => item.card.card.id == 'restaurant_grid_listing_v2').card.card.gridElements.infoWithStyle.restaurants;
-
-        setTimeout(() => {
-
-            setListOfRestaurants(updResList);
-        }, 3000)
+        setListOfRestaurants(updResList);
+        setFilteredList(updResList);
     }
 
-    // Conditional Rendering
-    // if (listOrRestaurants.length === 0) {
-    //     return <ShimmerUI/>
-    // }
-
+    const ApplySearch = (searchText) => {
+        // const text = document.getElementById('searchBox').value;
+        searchList = listOrRestaurants.filter(item => item.info.name.toUpperCase().includes(searchText.toUpperCase()));
+        setFilteredList(searchList);
+    }
+    
     return listOrRestaurants.length === 0
         ? (<ShimmerUI/>) 
         : (
             <div id='body'>
                 <div id='buttonSection'>
+                    <input type='text' id='searchBox' onChange={(event) => {
+                        setSearchText(event.target.value);
+                    }} value={searchText}/>
+                    <button onClick={() => ApplySearch(searchText)}>Search</button>
                     <button id='topRatedBtn' onClick={() => {
-                        const filteredList = listOrRestaurants.filter((res) => res.info.avgRatingString >= 4.2)
-                        setListOfRestaurants(filteredList);
+                        const tempList = listOrRestaurants.filter((res) => res.info.avgRatingString >= 4.2)
+                        setFilteredList(tempList);
                     }}>Top Rated</button>
                     <button id='showAll' onClick={() => {
                         console.log('Show all hit');
-                        setListOfRestaurants(restaurants);
+                        setFilteredList(listOrRestaurants);
                     }}>Show All</button>
                 </div>
                 <div id='res-container'>
                     {
-                        listOrRestaurants.map((item, index) => <ResCard resData={item} key={index}/>)
+                        filteredList.map((item, index) => <ResCard resData={item} key={index}/>)
                     }
                 </div>
             </div>
