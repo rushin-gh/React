@@ -69,30 +69,32 @@ const Body = () => {
         }, 3000)
     }
 
+    // Conditional Rendering
+    // if (listOrRestaurants.length === 0) {
+    //     return <ShimmerUI/>
+    // }
 
-    if (listOrRestaurants.length === 0) {
-        return <ShimmerUI/>
-    }
-
-    return (
-        <div id='body'>
-            <div id='buttonSection'>
-                <button id='topRatedBtn' onClick={() => {
-                    const filteredList = listOrRestaurants.filter((res) => res.info.avgRatingString >= 4.2)
-                    setListOfRestaurants(filteredList);
-                }}>Top Rated</button>
-                <button id='showAll' onClick={() => {
-                    console.log('Show all hit');
-                    setListOfRestaurants(restaurants);
-                }}>Show All</button>
+    return listOrRestaurants.length === 0
+        ? (<ShimmerUI/>) 
+        : (
+            <div id='body'>
+                <div id='buttonSection'>
+                    <button id='topRatedBtn' onClick={() => {
+                        const filteredList = listOrRestaurants.filter((res) => res.info.avgRatingString >= 4.2)
+                        setListOfRestaurants(filteredList);
+                    }}>Top Rated</button>
+                    <button id='showAll' onClick={() => {
+                        console.log('Show all hit');
+                        setListOfRestaurants(restaurants);
+                    }}>Show All</button>
+                </div>
+                <div id='res-container'>
+                    {
+                        listOrRestaurants.map((item, index) => <ResCard resData={item} key={index}/>)
+                    }
+                </div>
             </div>
-            <div id='res-container'>
-                {
-                    listOrRestaurants.map((item, index) => <ResCard resData={item} key={index}/>)
-                }
-            </div>
-        </div>
-    );
+        );
 }
 
 export default Body;
