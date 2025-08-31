@@ -24,7 +24,7 @@ const Body = () => {
 
     const ApplySearch = (searchText) => {
         // const text = document.getElementById('searchBox').value;
-        searchList = listOrRestaurants.filter(item => item.info.name.toUpperCase().includes(searchText.toUpperCase()));
+        let searchList = listOrRestaurants.filter(item => item.info.name.toUpperCase().includes(searchText.toUpperCase()));
         setFilteredList(searchList);
     }
     
