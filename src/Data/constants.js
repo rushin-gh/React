@@ -1,6 +1,6 @@
 export const CDN_URL = 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/';
 
-export const swiggy_mock_API = 'https://corsproxy.io/https://swiggy-api-4c740.web.app/swiggy-api.json';
+export const swiggy_mock_API = 'https://corsproxy.io/https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.136941200000003&lng=72.99991749999998&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING';
 
 /*
 https://pastebin.com/raw/0QcdEDBL

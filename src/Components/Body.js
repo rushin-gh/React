@@ -3,7 +3,7 @@ import restaurants from "../Data/constants";
 import { useState, useEffect } from 'react';
 import { swiggy_mock_API } from '../Data/constants';
 import ShimmerUI from './ShimmerUI'; 
-
+import { Link } from 'react-router-dom';
 
 const Body = () => {
     let [listOrRestaurants, setListOfRestaurants] = useState([]);
@@ -28,6 +28,7 @@ const Body = () => {
         setFilteredList(searchList);
     }
     
+    console.log(filteredList);
     return listOrRestaurants.length === 0
         ? (<ShimmerUI/>) 
         : (
@@ -48,7 +49,7 @@ const Body = () => {
                 </div>
                 <div id='res-container'>
                     {
-                        filteredList.map((item, index) => <ResCard resData={item} key={index}/>)
+                        filteredList.map((item, index) => <Link key={index} to={`/restaurant/${item.info.id}`}> <ResCard resData={item} key={index}/></Link>)
                     }
                 </div>
             </div>
