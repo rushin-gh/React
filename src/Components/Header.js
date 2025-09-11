@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
+import useOnlineStatus from "../util/useOnlineStatus";
 
 const Header = () => {
     const [btnText, setBtnText] = useState('Login');
@@ -9,6 +10,12 @@ const Header = () => {
     useEffect(() => {
         console.log('Use Effect Called!')
     }, [btnText]);
+
+    const onlineStatus = useOnlineStatus();
+
+    if (!onlineStatus) {
+        return <h1>Your are offline</h1>
+    }
 
     return (
         <div id='header'>

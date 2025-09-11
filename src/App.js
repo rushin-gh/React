@@ -9,6 +9,8 @@ import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import Phone from './Components/Phone';
 import Email from './Components/Email';
 import RestaurantPage from './Components/RestaurantPage';
+import UserFunComp from './Components/UserFunComp';
+import UserClassComp from './Components/UserClassComp';
 
 
 
@@ -51,6 +53,10 @@ const router = createBrowserRouter([
             {
                 path: 'restaurant/:resId',
                 element: <RestaurantPage/>
+            },
+            {
+                path: 'user',
+                element: <UserClassComp name="Sam Altman"/>
             }
         ],
         errorElement: <Error/>
